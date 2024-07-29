@@ -2,6 +2,7 @@ package processadorDeContas;
 
 import processadorDeContas.entities.Conta;
 import processadorDeContas.entities.Fatura;
+import processadorDeContas.entities.StatusFatura;
 import processadorDeContas.entities.pagamento.Pagamento;
 
 public class ProcessadorDeContas {
@@ -20,6 +21,12 @@ public class ProcessadorDeContas {
         }
         ;
       }
+    }
+
+    if (totalPago >= fatura.getValorTotal()) {
+      fatura.setStatus(StatusFatura.PAGA);
+    } else {
+      fatura.setStatus(StatusFatura.PENDENTE);
     }
   }
 
