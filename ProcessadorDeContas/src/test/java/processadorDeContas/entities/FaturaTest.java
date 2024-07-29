@@ -10,5 +10,6 @@ public class FaturaTest {
     Fatura fatura = new Fatura(LocalDate.now(), 1500.00, "Cliente A");
     assertEquals(1500.00, fatura.getValorTotal());
     assertEquals("Cliente A", fatura.getNomeCliente());
+    assertEquals(StatusFatura.PENDENTE, fatura.getStatus());
   }
 }
