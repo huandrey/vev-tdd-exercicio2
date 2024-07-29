@@ -1,4 +1,4 @@
-package processadorDeContas.pagamento;
+package processadorDeContas.entities.pagamento;
 
 import java.time.LocalDate;
 

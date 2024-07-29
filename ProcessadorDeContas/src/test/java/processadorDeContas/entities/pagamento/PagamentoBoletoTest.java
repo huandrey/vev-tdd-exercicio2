@@ -1,4 +1,4 @@
-package processadorDeContas.pagamento;
+package processadorDeContas.entities.pagamento;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
