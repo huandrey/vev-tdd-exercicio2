@@ -15,6 +15,7 @@ public class Fatura {
     this.valorTotal = valorTotal;
     this.nomeCliente = nomeCliente;
     this.status = StatusFatura.PENDENTE;
+    this.contas = new ArrayList<>();
   }
 
   public ArrayList<Conta> getContas() {
