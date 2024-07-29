@@ -8,7 +8,7 @@ public class PagamentoBoleto extends Pagamento {
     verificaValorBoleto();
   }
 
-  public double calcularValorComAtraso(LocalDate dataConta) {
+  public double getValorPago(LocalDate dataConta) {
     if (data.isAfter(dataConta)) {
       return valorPago * 1.10;
     }

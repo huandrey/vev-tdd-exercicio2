@@ -8,8 +8,8 @@ public class PagamentoCartaoDeCredito extends Pagamento {
   }
 
   @Override
-  public boolean isValidoParaInclusao(LocalDate dataFatura) {
+  public boolean isValidoParaInclusao(LocalDate dataConta, LocalDate dataFatura) {
     LocalDate dataFaturaMinus15Days = dataFatura.minusDays(15);
-    return data.isEqual(dataFaturaMinus15Days) || data.isBefore(dataFaturaMinus15Days);
+    return dataConta.isEqual(dataFaturaMinus15Days) || dataConta.isBefore(dataFaturaMinus15Days);
   }
 }

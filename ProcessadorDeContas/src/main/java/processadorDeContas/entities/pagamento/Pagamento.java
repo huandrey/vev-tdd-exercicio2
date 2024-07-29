@@ -27,7 +27,7 @@ public abstract class Pagamento {
     this.data = data;
   }
 
-  public boolean isValidoParaInclusao(LocalDate dataFatura) {
-    return data.isEqual(dataFatura) || data.isBefore(dataFatura);
+  public boolean isValidoParaInclusao(LocalDate dataConta, LocalDate dataFatura) {
+    return dataConta.isEqual(dataFatura) || dataConta.isBefore(dataFatura);
   }
 }
