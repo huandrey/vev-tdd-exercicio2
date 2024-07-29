@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 public class PagamentoCartaoDeCreditoTest {
   @Test
   public void testInclusaoValida() {
-    PagamentoCartaoDeCredito pagamento = new PagamentoCartaoDeCredito(1000.00, LocalDate.now());
-    assertTrue(pagamento.isValidoParaInclusao(LocalDate.now().minusDays(16)));
+    PagamentoCartaoDeCredito pagamento = new PagamentoCartaoDeCredito(1000.00, LocalDate.now().minusDays(15));
+    assertTrue(pagamento.isValidoParaInclusao(LocalDate.now()));
   }
 
   @Test
