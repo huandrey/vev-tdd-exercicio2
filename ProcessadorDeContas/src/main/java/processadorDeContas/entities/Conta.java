@@ -1,4 +1,4 @@
-package processadorDeContas;
+package processadorDeContas.entities;
 
 import java.time.LocalDate;
 
