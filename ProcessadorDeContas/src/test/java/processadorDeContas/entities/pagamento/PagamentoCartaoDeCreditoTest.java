@@ -14,13 +14,13 @@ public class PagamentoCartaoDeCreditoTest {
 
   @Test
   public void testInclusaoValida() {
-    PagamentoCartaoDeCredito pagamento = new PagamentoCartaoDeCredito(1000.00, conta.getData());
+    PagamentoCartaoDeCredito pagamento = new PagamentoCartaoDeCredito(conta, conta.getData());
     assertTrue(pagamento.isValidoParaInclusao(conta.getData(), LocalDate.now()));
   }
 
   @Test
   public void testInclusaoInvalida() {
-    PagamentoCartaoDeCredito pagamento = new PagamentoCartaoDeCredito(1000.00, conta.getData());
+    PagamentoCartaoDeCredito pagamento = new PagamentoCartaoDeCredito(conta, conta.getData());
     assertFalse(pagamento.isValidoParaInclusao(conta.getData(), LocalDate.now().minusDays(14)));
   }
 }

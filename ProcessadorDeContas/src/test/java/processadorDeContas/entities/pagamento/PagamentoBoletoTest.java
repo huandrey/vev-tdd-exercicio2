@@ -16,47 +16,52 @@ public class PagamentoBoletoTest {
 
   @Test
   public void testValorPagoValido() {
-    PagamentoBoleto pagamento = new PagamentoBoleto(1000.00, conta.getData());
+    PagamentoBoleto pagamento = new PagamentoBoleto(conta, conta.getData());
     assertEquals(1000.00, pagamento.getValorPago());
   }
 
   @Test
   public void testValorPagoInvalido() {
     assertThrows(IllegalArgumentException.class, () -> {
-      new PagamentoBoleto(0.00, LocalDate.now());
+      Conta contaAbaixoDoLimiteBoleto = new Conta("001", LocalDate.now(), 0.00);
+      new PagamentoBoleto(contaAbaixoDoLimiteBoleto, contaAbaixoDoLimiteBoleto.getData());
     });
     assertThrows(IllegalArgumentException.class, () -> {
-      new PagamentoBoleto(5000.01, LocalDate.now());
+      Conta contaAcimaDoLimiteBoleto = new Conta("002", LocalDate.now(), 5000.01);
+
+      new PagamentoBoleto(contaAcimaDoLimiteBoleto, contaAcimaDoLimiteBoleto.getData());
     });
   }
 
   @Test
   public void testValorPagoLimiteInferior() {
-    PagamentoBoleto pagamento = new PagamentoBoleto(0.01, conta.getData());
+    Conta contaLimiteInferiorBoleto = new Conta("001", LocalDate.now(), 0.01);
+    PagamentoBoleto pagamento = new PagamentoBoleto(contaLimiteInferiorBoleto, contaLimiteInferiorBoleto.getData());
     assertEquals(0.01, pagamento.getValorPago());
   }
 
   @Test
   public void testValorPagoLimiteSuperior() {
-    PagamentoBoleto pagamento = new PagamentoBoleto(5000.00, conta.getData());
+    Conta contaLimiteSuperiorBoleto = new Conta("001", LocalDate.now(), 5000.00);
+    PagamentoBoleto pagamento = new PagamentoBoleto(contaLimiteSuperiorBoleto, contaLimiteSuperiorBoleto.getData());
     assertEquals(5000.00, pagamento.getValorPago());
   }
 
   @Test
   public void testCalculoValorComAtraso() {
-    PagamentoBoleto pagamento = new PagamentoBoleto(1000.00, conta.getData().plusDays(1));
-    assertEquals(1100.00, pagamento.getValorPago(LocalDate.now()));
+    PagamentoBoleto pagamento = new PagamentoBoleto(conta, conta.getData().plusDays(1));
+    assertEquals(1100.00, pagamento.getValorPago());
   }
 
   @Test
   public void testInclusaoValida() {
-    PagamentoBoleto pagamento = new PagamentoBoleto(1000.00, conta.getData());
+    PagamentoBoleto pagamento = new PagamentoBoleto(conta, conta.getData());
     assertTrue(pagamento.isValidoParaInclusao(conta.getData(), LocalDate.now()));
   }
 
   @Test
   public void testInclusaoInvalida() {
-    PagamentoBoleto pagamento = new PagamentoBoleto(1000.00, conta.getData());
+    PagamentoBoleto pagamento = new PagamentoBoleto(conta, conta.getData());
     assertFalse(pagamento.isValidoParaInclusao(conta.getData(), conta.getData().minusDays(1)));
   }
 }

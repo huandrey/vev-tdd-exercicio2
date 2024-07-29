@@ -2,17 +2,22 @@ package processadorDeContas.entities.pagamento;
 
 import java.time.LocalDate;
 
+import processadorDeContas.entities.Conta;
+
 public class PagamentoBoleto extends Pagamento {
-  public PagamentoBoleto(double valorPago, LocalDate data) {
-    super(valorPago, data);
+  public PagamentoBoleto(Conta conta, LocalDate data) {
+    super(conta, data);
     verificaValorBoleto();
+    setValorPago(conta);
   }
 
-  public double getValorPago(LocalDate dataConta) {
-    if (data.isAfter(dataConta)) {
-      return valorPago * 1.10;
+  @Override
+  protected void setValorPago(Conta conta) {
+    if (data.isAfter(conta.getData())) {
+      super.valorPago = conta.getValorPago() * 1.10;
+    } else {
+      super.valorPago = conta.getValorPago();
     }
-    return valorPago;
   }
 
   private void verificaValorBoleto() {

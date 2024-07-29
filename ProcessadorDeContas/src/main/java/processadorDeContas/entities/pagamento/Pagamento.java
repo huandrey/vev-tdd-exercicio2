@@ -2,13 +2,19 @@ package processadorDeContas.entities.pagamento;
 
 import java.time.LocalDate;
 
+import processadorDeContas.entities.Conta;
+
 public abstract class Pagamento {
   protected double valorPago;
   protected LocalDate data;
 
-  public Pagamento(double valorPago, LocalDate data) {
-    this.valorPago = valorPago;
+  public Pagamento(Conta conta, LocalDate data) {
     this.data = data;
+    setValorPago(conta);
+  }
+
+  protected void setValorPago(Conta conta) {
+    this.valorPago = conta.getValorPago();
   }
 
   public double getValorPago() {

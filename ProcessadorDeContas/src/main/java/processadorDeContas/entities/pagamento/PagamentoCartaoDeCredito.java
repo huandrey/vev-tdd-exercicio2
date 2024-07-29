@@ -2,9 +2,11 @@ package processadorDeContas.entities.pagamento;
 
 import java.time.LocalDate;
 
+import processadorDeContas.entities.Conta;
+
 public class PagamentoCartaoDeCredito extends Pagamento {
-  public PagamentoCartaoDeCredito(double valorPago, LocalDate data) {
-    super(valorPago, data);
+  public PagamentoCartaoDeCredito(Conta conta, LocalDate data) {
+    super(conta, data);
   }
 
   @Override
