@@ -18,8 +18,7 @@ public class ProcessadorDeContasTest {
     LocalDate contaDate = LocalDate.of(2023, 2, 01);
 
     @Test
-    public void testFaturaPaga() {
-        LocalDate faturaDate =;
+    public void testFaturaPaga() 
 
         Fatura fatura = new Fatura(faturaDate, 1500.00, "Cliente A");
 
