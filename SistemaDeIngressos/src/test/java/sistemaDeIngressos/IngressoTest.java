@@ -1,10 +1,10 @@
 package sistemaDeIngressos;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import sistemaDeIngressos.models.Ingresso;
+import sistemaDeIngressos.models.StatusIngresso;
+import sistemaDeIngressos.models.TipoIngresso;
 
 public class IngressoTest {
   private Ingresso ingresso;
