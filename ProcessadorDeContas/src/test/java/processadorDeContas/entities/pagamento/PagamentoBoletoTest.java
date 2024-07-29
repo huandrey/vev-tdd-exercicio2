@@ -24,26 +24,26 @@ public class PagamentoBoletoTest {
   public void testValorPagoInvalido() {
     assertThrows(IllegalArgumentException.class, () -> {
       Conta contaAbaixoDoLimiteBoleto = new Conta("001", LocalDate.now(), 0.00);
-      new PagamentoBoleto(contaAbaixoDoLimiteBoleto, contaAbaixoDoLimiteBoleto.getData());
+      new PagamentoBoleto(contaAbaixoDoLimiteBoleto);
     });
     assertThrows(IllegalArgumentException.class, () -> {
       Conta contaAcimaDoLimiteBoleto = new Conta("002", LocalDate.now(), 5000.01);
 
-      new PagamentoBoleto(contaAcimaDoLimiteBoleto, contaAcimaDoLimiteBoleto.getData());
+      new PagamentoBoleto(contaAcimaDoLimiteBoleto);
     });
   }
 
   @Test
   public void testValorPagoLimiteInferior() {
     Conta contaLimiteInferiorBoleto = new Conta("001", LocalDate.now(), 0.01);
-    PagamentoBoleto pagamento = new PagamentoBoleto(contaLimiteInferiorBoleto, contaLimiteInferiorBoleto.getData());
+    PagamentoBoleto pagamento = new PagamentoBoleto(contaLimiteInferiorBoleto);
     assertEquals(0.01, pagamento.getValorPago());
   }
 
   @Test
   public void testValorPagoLimiteSuperior() {
     Conta contaLimiteSuperiorBoleto = new Conta("001", LocalDate.now(), 5000.00);
-    PagamentoBoleto pagamento = new PagamentoBoleto(contaLimiteSuperiorBoleto, contaLimiteSuperiorBoleto.getData());
+    PagamentoBoleto pagamento = new PagamentoBoleto(contaLimiteSuperiorBoleto);
     assertEquals(5000.00, pagamento.getValorPago());
   }
 
