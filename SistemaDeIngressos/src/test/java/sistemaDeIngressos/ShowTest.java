@@ -1,7 +1,12 @@
 package sistemaDeIngressos;
 
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import sistemaDeIngressos.models.LoteIngresso;
 import sistemaDeIngressos.models.Show;
 
 public class ShowTest {
@@ -10,5 +15,14 @@ public class ShowTest {
   @BeforeEach
   void setup() {
     show = new Show(true, "Kendrick Lamar", 1000.00, 2000.00);
+  }
+
+  @Test
+  void criaLoteIngressoPorMeioDoShow() {
+    show.criaLoteIngresso(1, 500, 10.0, 15, 20);
+    LoteIngresso loteIngresso = show.getLoteIngresso(0);
+
+    assertNotNull(loteIngresso, "O objeto loteIngresso não deveria ser nulo.");
+    assertEquals(500, loteIngresso.getTotalIngressos(), "O número total de ingressos deve ser 500.");
   }
 }
