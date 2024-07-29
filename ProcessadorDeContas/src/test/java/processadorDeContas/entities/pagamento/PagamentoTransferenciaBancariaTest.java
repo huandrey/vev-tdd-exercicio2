@@ -14,13 +14,13 @@ public class PagamentoTransferenciaBancariaTest {
 
   @Test
   public void testInclusaoValida() {
-    PagamentoTransferenciaBancaria pagamento = new PagamentoTransferenciaBancaria(conta, conta.getData());
+    PagamentoTransferenciaBancaria pagamento = new PagamentoTransferenciaBancaria(conta);
     assertTrue(pagamento.isValidoParaInclusao(conta.getData(), LocalDate.now()));
   }
 
   @Test
   public void testInclusaoInvalida() {
-    PagamentoTransferenciaBancaria pagamento = new PagamentoTransferenciaBancaria(conta, conta.getData());
+    PagamentoTransferenciaBancaria pagamento = new PagamentoTransferenciaBancaria(conta);
     assertFalse(pagamento.isValidoParaInclusao(conta.getData(), LocalDate.now().minusDays(1)));
   }
 }

@@ -5,6 +5,10 @@ import java.time.LocalDate;
 import processadorDeContas.entities.Conta;
 
 public class PagamentoCartaoDeCredito extends Pagamento {
+  public PagamentoCartaoDeCredito(Conta conta) {
+    super(conta);
+  }
+
   public PagamentoCartaoDeCredito(Conta conta, LocalDate data) {
     super(conta, data);
   }

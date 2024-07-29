@@ -8,6 +8,11 @@ public abstract class Pagamento {
   protected double valorPago;
   protected LocalDate data;
 
+  public Pagamento(Conta conta) {
+    this.data = conta.getData();
+    setValorPago(conta);
+  }
+
   public Pagamento(Conta conta, LocalDate data) {
     this.data = data;
     setValorPago(conta);

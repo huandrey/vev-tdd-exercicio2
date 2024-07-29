@@ -5,6 +5,12 @@ import java.time.LocalDate;
 import processadorDeContas.entities.Conta;
 
 public class PagamentoBoleto extends Pagamento {
+  public PagamentoBoleto(Conta conta) {
+    super(conta);
+    verificaValorBoleto();
+    setValorPago(conta);
+  }
+
   public PagamentoBoleto(Conta conta, LocalDate data) {
     super(conta, data);
     verificaValorBoleto();
