@@ -11,6 +11,9 @@ public class LoteIngresso {
     if (descontoAplicavel > 25) {
       throw new IllegalArgumentException("Desconto não pode ser maior que 25%.");
     }
+    if (porcentagemVip < 20 || porcentagemVip > 30) {
+      throw new IllegalArgumentException("A porcentagem de ingressos VIP deve estar entre 20% e 30%.");
+  }
 
     this.id = id;
     this.quantidadeTotalIngressos = quantidadeTotalIngressos;
