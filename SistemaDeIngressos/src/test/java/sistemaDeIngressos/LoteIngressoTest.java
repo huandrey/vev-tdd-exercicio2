@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import sistemaDeIngressos.models.Ingresso;
 import sistemaDeIngressos.models.LoteIngresso;
+import sistemaDeIngressos.models.TipoIngresso;
 
 public class LoteIngressoTest {
   private LoteIngresso loteIngresso;
@@ -23,7 +25,7 @@ public class LoteIngressoTest {
     assertEquals(1, loteIngresso.getId(), "O id do lote de ingressos deve ser 1.");
     assertEquals(500, loteIngresso.getTotalIngressos(), "A quantidade de ingressos deve ser 500.");
     assertEquals(10.00, loteIngresso.getPrecoNormalIngresso(), "O preço normal dos ingressos deve ser 10.00.");
-    assertEquals(10.00, loteIngresso.getDescontoAplicavel(), "O desconto aplicável dos ingressos deve ser 10.00.");
+    assertEquals(0.1, loteIngresso.getDescontoAplicavel(), "O desconto aplicável dos ingressos deve ser 10.00.");
   }
 
   @Test
@@ -48,5 +50,33 @@ public class LoteIngressoTest {
       new LoteIngresso(1, 500, 10.0, 25, 19.9); // Desconto de 25.1%
     }, "Esperava IllegalArgumentException para porcentagem VIP abaixo de 20%.");
     assertEquals("A porcentagem de ingressos VIP deve estar entre 20% e 30%.", exception.getMessage());
+  }
+
+  @Test
+  void criaIngressoPorMeioDoLote() {
+    loteIngresso.criaIngresso(TipoIngresso.NORMAL, 1);
+    Ingresso ingressoCriado = loteIngresso.getIngressos().get(0);
+    assertNotNull(ingressoCriado, "O ingresso deve ser diferente de null");
+  }
+
+  @Test
+  void verificaValorIngressoNormal() {
+    loteIngresso.criaIngresso(TipoIngresso.NORMAL, 1);
+    Ingresso ingresso = loteIngresso.getIngressos().get(0);
+    assertEquals(9.00, loteIngresso.calculaPreco(ingresso), "O preço do ingresso normal não está correto.");
+  }
+
+  @Test
+  void verificaValorIngressoVip() {
+    loteIngresso.criaIngresso(TipoIngresso.VIP, 1);
+    Ingresso ingresso = loteIngresso.getIngressos().get(0);
+    assertEquals(9.00, loteIngresso.calculaPreco(ingresso), "O preço do ingresso normal não está correto.");
+  }
+
+  @Test
+  void verificaValorIngressoMeia() {
+    loteIngresso.criaIngresso(TipoIngresso.MEIA_ENTRADA, 1);
+    Ingresso ingresso = loteIngresso.getIngressos().get(0);
+    assertEquals(5.00, loteIngresso.calculaPreco(ingresso), "O preço do ingresso normal não está correto.");
   }
 }
