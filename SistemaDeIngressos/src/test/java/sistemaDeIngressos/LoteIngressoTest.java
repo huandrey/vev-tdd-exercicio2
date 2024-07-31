@@ -33,4 +33,20 @@ public class LoteIngressoTest {
     }, "Esperava IllegalArgumentException para desconto acima de 25%.");
     assertEquals("Desconto não pode ser maior que 25%.", exception.getMessage());
   }
+
+  @Test
+  void criaLoteIngressoComPorcentagemVipMaiorQue30() {
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+      new LoteIngresso(1, 500, 10.0, 25, 30.1); // Desconto de 25.1%
+    }, "Esperava IllegalArgumentException para porcentagem VIP acima de 30%.");
+    assertEquals("A porcentagem de ingressos VIP deve estar entre 20% e 30%.", exception.getMessage());
+  }
+
+  @Test
+  void criaLoteIngressoComPorcentagemVipMenorQue20() {
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+      new LoteIngresso(1, 500, 10.0, 25, 19.9); // Desconto de 25.1%
+    }, "Esperava IllegalArgumentException para porcentagem VIP abaixo de 20%.");
+    assertEquals("A porcentagem de ingressos VIP deve estar entre 20% e 30%.", exception.getMessage());
+  }
 }
