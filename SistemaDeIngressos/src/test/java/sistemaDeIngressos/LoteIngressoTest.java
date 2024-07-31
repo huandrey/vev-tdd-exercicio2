@@ -3,7 +3,6 @@ package sistemaDeIngressos;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +21,7 @@ public class LoteIngressoTest {
   void recuperaInformacoesDoLote () {
     assertNotNull(loteIngresso, "O objeto loteIngresso não deveria ser nulo.");
     assertEquals(1, loteIngresso.getId(), "O id do lote de ingressos deve ser 1.");
-    assertEquals(500, loteIngresso.getQuantidadeIngresso(), "A quantidade de ingressos deve ser 500.");
+    assertEquals(500, loteIngresso.getTotalIngressos(), "A quantidade de ingressos deve ser 500.");
     assertEquals(10.00, loteIngresso.getPrecoNormalIngresso(), "O preço normal dos ingressos deve ser 10.00.");
     assertEquals(10.00, loteIngresso.getDescontoAplicavel(), "O desconto aplicável dos ingressos deve ser 10.00.");
   }
