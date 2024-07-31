@@ -63,20 +63,20 @@ public class LoteIngressoTest {
   void verificaValorIngressoNormal() {
     loteIngresso.criaIngresso(TipoIngresso.NORMAL, 1);
     Ingresso ingresso = loteIngresso.getIngressos().get(0);
-    assertEquals(9.00, loteIngresso.calculaPreco(ingresso), "O preço do ingresso normal não está correto.");
+    assertEquals(9.00, loteIngresso.calculaPrecoComDesconto(ingresso), "O preço do ingresso normal não está correto.");
   }
 
   @Test
   void verificaValorIngressoVip() {
     loteIngresso.criaIngresso(TipoIngresso.VIP, 1);
     Ingresso ingresso = loteIngresso.getIngressos().get(0);
-    assertEquals(9.00, loteIngresso.calculaPreco(ingresso), "O preço do ingresso normal não está correto.");
+    assertEquals(18.00, loteIngresso.calculaPrecoComDesconto(ingresso), "O preço do ingresso normal não está correto.");
   }
 
   @Test
   void verificaValorIngressoMeia() {
     loteIngresso.criaIngresso(TipoIngresso.MEIA_ENTRADA, 1);
     Ingresso ingresso = loteIngresso.getIngressos().get(0);
-    assertEquals(5.00, loteIngresso.calculaPreco(ingresso), "O preço do ingresso normal não está correto.");
+    assertEquals(5.00, loteIngresso.calculaPrecoComDesconto(ingresso), "O preço do ingresso normal não está correto.");
   }
 }
