@@ -31,11 +31,7 @@ public class Ingresso {
     return status;
   }
 
-  public void setStatus(StatusIngresso status) {
-    this.status = status;
-  }
-
   public void vendeIngresso() {
-    throw new UnsupportedOperationException("Unimplemented method 'vendeIngresso'");
+    this.status = StatusIngresso.VENDIDO;
   }
 }
