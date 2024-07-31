@@ -2,14 +2,18 @@ package sistemaDeIngressos.models;
 
 public class LoteIngresso {
   private int id;
-  private int quantidadeIngresso;
+  private int quantidadeTotalIngressos;
   private double precoNormalIngresso;
   private double descontoAplicavel;
   private double porcentagemVip;
 
-  public LoteIngresso(int id, int quantidadeIngresso, double precoNormalIngresso, double descontoAplicavel, double porcentagemVip) {
+  public LoteIngresso(int id, int quantidadeTotalIngressos, double precoNormalIngresso, double descontoAplicavel, double porcentagemVip) {
+    if (descontoAplicavel > 25) {
+      throw new IllegalArgumentException("Desconto não pode ser maior que 25%.");
+    }
+
     this.id = id;
-    this.quantidadeIngresso = quantidadeIngresso;
+    this.quantidadeTotalIngressos = quantidadeTotalIngressos;
     this.precoNormalIngresso = precoNormalIngresso;
     this.descontoAplicavel = descontoAplicavel;
     this.porcentagemVip = porcentagemVip;
@@ -23,12 +27,8 @@ public class LoteIngresso {
     this.id = id;
   }
 
-  public int getQuantidadeIngresso() {
-    return quantidadeIngresso;
-  }
-
-  public void setQuantidadeIngresso(int quantidadeIngresso) {
-    this.quantidadeIngresso = quantidadeIngresso;
+  public int getTotalIngressos() {
+    return quantidadeTotalIngressos;
   }
 
   public double getPrecoNormalIngresso() {

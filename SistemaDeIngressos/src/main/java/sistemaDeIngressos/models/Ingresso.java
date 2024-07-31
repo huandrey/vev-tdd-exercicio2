@@ -1,6 +1,5 @@
 package sistemaDeIngressos.models;
 
-
 public class Ingresso {
   private int id;
   private TipoIngresso tipo;
@@ -34,5 +33,9 @@ public class Ingresso {
 
   public void setStatus(StatusIngresso status) {
     this.status = status;
+  }
+
+  public void vendeIngresso() {
+    throw new UnsupportedOperationException("Unimplemented method 'vendeIngresso'");
   }
 }
