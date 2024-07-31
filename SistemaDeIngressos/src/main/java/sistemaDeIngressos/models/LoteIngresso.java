@@ -74,7 +74,7 @@ public class LoteIngresso {
     int quantidadeVip = (int) Math.round(totalIngressos * percentualVip);
     int quantidadeMeiaEntrada = (int) Math.floor(totalIngressos * 0.10);
     int quantidadeNormal = totalIngressos - quantidadeVip - quantidadeMeiaEntrada;
-    
+
     adicionarIngressos(TipoIngresso.VIP, quantidadeVip);
     adicionarIngressos(TipoIngresso.MEIA_ENTRADA, quantidadeMeiaEntrada);
     adicionarIngressos(TipoIngresso.NORMAL, quantidadeNormal);
@@ -89,9 +89,9 @@ public class LoteIngresso {
   private double calculaPreco(Ingresso ingresso) {
     switch (ingresso.getTipo()) {
       case VIP:
-        return this.precoNormalIngresso * 2; 
+        return this.precoNormalIngresso * 2;
       case MEIA_ENTRADA:
-        return this.precoNormalIngresso / 2; 
+        return this.precoNormalIngresso / 2;
       default:
         return this.precoNormalIngresso;
     }
@@ -102,5 +102,13 @@ public class LoteIngresso {
       return calculaPreco(ingresso) * (1 - this.descontoAplicavel);
     }
     return calculaPreco(ingresso);
+  }
+
+  public void venderTodosIngressos() {
+    for (Ingresso ingresso : ingressos) {
+      if (ingresso.getStatus() == StatusIngresso.NA0_VENDIDO) {
+        ingresso.vendeIngresso();
+      }
+    }
   }
 }
