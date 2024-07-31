@@ -25,4 +25,17 @@ public class ShowTest {
     assertNotNull(loteIngresso, "O objeto loteIngresso não deveria ser nulo.");
     assertEquals(500, loteIngresso.getTotalIngressos(), "O número total de ingressos deve ser 500.");
   }
+
+  @Test
+  void gerarRelatorioComLucro() {
+    LoteIngresso lote = show.criaLoteIngresso(1, 500, 10.00, 15.00, 20);
+    lote.venderTodosIngressos();
+    String relatorio = show.gerarRelatorio();
+    assertEquals("Relatório do Show: Kendrick Lamar\n" +
+        "Ingressos Vendidos (VIP): 100\n" +
+        "Ingressos Vendidos (Meia Entrada): 50\n" +
+        "Ingressos Vendidos (Normal): 350\n" +
+        "Receita Líquida: R$ 1625.0\n" +
+        "Status Financeiro: LUCRO\n", relatorio);
+  }
 }

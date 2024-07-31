@@ -21,7 +21,7 @@ public class LoteIngressoTest {
   }
 
   @Test
-  void recuperaInformacoesDoLote () {
+  void recuperaInformacoesDoLote() {
     assertNotNull(loteIngresso, "O objeto loteIngresso não deveria ser nulo.");
     assertEquals(1, loteIngresso.getId(), "O id do lote de ingressos deve ser 1.");
     assertEquals(500, loteIngresso.getTotalIngressos(), "A quantidade de ingressos deve ser 500.");
@@ -76,5 +76,14 @@ public class LoteIngressoTest {
     Ingresso ingresso = new Ingresso(1, TipoIngresso.MEIA_ENTRADA, StatusIngresso.NA0_VENDIDO);
 
     assertEquals(5.00, loteIngresso.calculaPrecoComDesconto(ingresso), "O preço do ingresso normal não está correto.");
+  }
+
+  @Test
+  void testVenderTodosIngressos() {
+    LoteIngresso loteIngresso = new LoteIngresso(1, 500, 100.00, 0, 20);
+    loteIngresso.venderTodosIngressos();
+    for (Ingresso ingresso : loteIngresso.getIngressos()) {
+      assertEquals(StatusIngresso.VENDIDO, ingresso.getStatus());
+    }
   }
 }
