@@ -80,7 +80,7 @@ public class LoteIngresso {
     adicionarIngressos(TipoIngresso.NORMAL, quantidadeNormal);
   }
 
-  public void adicionarIngressos(TipoIngresso tipo, int quantidade) {
+  private void adicionarIngressos(TipoIngresso tipo, int quantidade) {
     for (int i = 0; i < quantidade; i++) {
       ingressos.add(new Ingresso(i, tipo, StatusIngresso.NA0_VENDIDO));
     }
