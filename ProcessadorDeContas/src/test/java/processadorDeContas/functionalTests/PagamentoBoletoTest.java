@@ -1,4 +1,4 @@
-package processadorDeContas.entities.pagamento;
+package processadorDeContas.functionalTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import processadorDeContas.entities.Conta;
+import processadorDeContas.entities.pagamento.PagamentoBoleto;
 
 public class PagamentoBoletoTest {
   Conta conta = new Conta("001", LocalDate.now(), 1000);

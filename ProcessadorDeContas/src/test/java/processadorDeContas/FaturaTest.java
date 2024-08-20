@@ -1,8 +1,11 @@
-package processadorDeContas.entities;
+package processadorDeContas;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
+
+import processadorDeContas.entities.Fatura;
+import processadorDeContas.entities.StatusFatura;
 
 public class FaturaTest {
   @Test

@@ -1,3 +1,4 @@
+package processadorDeContas.functionalTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
